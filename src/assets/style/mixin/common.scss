@@ -1,0 +1,14 @@
+
+/**
+ * 常规公共样式提取
+ * 通过 @mixin 定义
+ * 通过 @include 引用  如：@include backgroundImage('./demo.png);
+ */
+
+@mixin backgroundImage($url) {
+	display: inline-block;
+	width: 100%;
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
