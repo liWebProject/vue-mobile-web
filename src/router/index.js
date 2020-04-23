@@ -13,6 +13,7 @@ Vue.use(Router)
 //路由懒加载
 const home = r => require.ensure([], () => r(require('@/views/index.vue')))
 const icons = r => require.ensure([], () => r(require('@/views/icons/index.vue')))
+const demo = r => require.ensure([], () => r(require('@/views/demo/index.vue')))
 const error = r => require.ensure([], () => r(require('@/views/error/index.vue')))
 
 
@@ -28,6 +29,11 @@ export const routes = [
     name: 'icons',
     component: icons,
     meta: { title: '图标列表', keepAlive: true, auth: false }
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: demo,
   },
   {
     path: '/error',

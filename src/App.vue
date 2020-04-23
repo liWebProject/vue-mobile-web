@@ -29,6 +29,8 @@ export default {
 
 <style lang="scss">
 
+@import '@/assets/style/reset.scss';
+
   .router-fade-enter-active, .router-fade-leave-active {
       transition: opacity .3s;
   }

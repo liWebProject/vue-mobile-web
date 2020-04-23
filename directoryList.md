@@ -1,30 +1,3 @@
-# vue-mobile-project
-
-> 这是一个基于vue框架搭建的移动端项目
-主要技术栈： vue2 + vue-cli2 + vue全家桶 + vux 等
-
-## 安装流程
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
-## 项目结构
-
-``` 
 |-- vue-mobile-web
     |-- .babelrc
     |-- .editorconfig
@@ -42,6 +15,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |   |-- webpack.base.conf.js
     |   |-- webpack.dev.conf.js
     |   |-- webpack.prod.conf.js
+    |   |-- src
+    |       |-- assets
+    |           |-- style
+    |               |-- sprite.png
+    |               |-- sprite.scss
     |-- config
     |   |-- dev.env.js
     |   |-- index.js
@@ -49,7 +27,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |-- mock
     |   |-- article.js
     |   |-- index.js
-    |   |-- ...
+    |   |-- mock-server.js
     |-- src
     |   |-- App.vue
     |   |-- main.js
@@ -58,7 +36,41 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |   |   |   |-- index.js
     |   |   |   |-- svgo.yml
     |   |   |   |-- svg
+    |   |   |       |-- 404.svg
+    |   |   |       |-- bullhorn.svg
+    |   |   |       |-- clipboard.svg
+    |   |   |       |-- clubs.svg
+    |   |   |       |-- connection.svg
+    |   |   |       |-- diamonds.svg
+    |   |   |       |-- dice.svg
+    |   |   |       |-- documentation.svg
+    |   |   |       |-- drag.svg
+    |   |   |       |-- edit.svg
+    |   |   |       |-- email.svg
+    |   |   |       |-- exit-fullscreen.svg
+    |   |   |       |-- eye-open.svg
+    |   |   |       |-- eye.svg
+    |   |   |       |-- form.svg
+    |   |   |       |-- fullscreen.svg
+    |   |   |       |-- guide.svg
+    |   |   |       |-- link.svg
+    |   |   |       |-- list.svg
+    |   |   |       |-- lock.svg
+    |   |   |       |-- message.svg
+    |   |   |       |-- money.svg
+    |   |   |       |-- pacman.svg
+    |   |   |       |-- password.svg
+    |   |   |       |-- peoples.svg
+    |   |   |       |-- qq.svg
+    |   |   |       |-- search.svg
+    |   |   |       |-- shopping.svg
+    |   |   |       |-- spades.svg
     |   |   |-- images
+    |   |   |   |-- icon-demo1.png
+    |   |   |   |-- icon-demo2.png
+    |   |   |-- sprite
+    |   |   |   |-- sprite.png
+    |   |   |   |-- sprite.scss
     |   |   |-- style
     |   |       |-- reset.scss
     |   |       |-- sprite.png
@@ -70,14 +82,17 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |   |-- common
     |   |   |-- bus.js
     |   |   |-- open-window.js
-    |   |   |-- ...
+    |   |   |-- scroll-to.js
     |   |-- components
     |   |   |-- SvgIcon
     |   |       |-- index.vue
     |   |-- config
     |   |   |-- baseConfig.js
+    |   |   |-- baseConfig_BACKUP_4092.js
+    |   |   |-- baseConfig_BASE_4092.js
+    |   |   |-- baseConfig_LOCAL_4092.js
+    |   |   |-- baseConfig_REMOTE_4092.js
     |   |   |-- wxSdkConfig.js
-    |   |   |-- ...
     |   |-- directive
     |   |   |-- sticky.js
     |   |   |-- el-drag-dialog
@@ -86,7 +101,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |   |   |-- el-table
     |   |   |   |-- adaptive.js
     |   |   |   |-- index.js
-    |   |   |-- ...
+    |   |   |-- permission
+    |   |   |   |-- index.js
+    |   |   |   |-- permission.js
+    |   |   |-- waves
+    |   |       |-- index.js
+    |   |       |-- waves.css
+    |   |       |-- waves.js
     |   |-- filters
     |   |   |-- index.js
     |   |-- layout
@@ -111,7 +132,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |   |   |-- index.js
     |   |   |-- terminal-type.js
     |   |   |-- validate.js
-    |   |   |-- ...
     |   |-- views
     |       |-- index.vue
     |       |-- error
@@ -119,41 +139,12 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     |       |-- icons
     |           |-- index.vue
     |           |-- svg-icons.js
-    |       |-- ...
     |-- static
+        |-- .gitkeep
         |-- images
+        |   |-- demo1.png
+        |   |-- demo2.jpg
         |-- js
             |-- baidutongji.js
             |-- flexible.min.js
             |-- jquery.lazyload.min.js
-        |-- css
-
-
-```
-
-## 项目自动化流程说明
-
-具体使用方法，查询demo文件（路由：/demo）
-
-1、以750px设计稿为基准，通过 flexible.js 结合 postcss-px2rem加载器实现移动端自适应，
-   css中直接使用px单位，rem 由配置的加载器计算输出
-
-2、支持svg、小图片等自动编译热更新，/static/images中的图片映射到自定义全局对象staticImgs中，便于统一管理和使用
-
-3、支持css3样式自动加前缀，全局静态样式表的引入
-
-4、配置了FastClick 和 vue-touch 两种移动端触屏事件，支持 click、tap、swiperight、swipetop等触发事件，规避了移动端延迟300ms的问题
-
-5、vuex 结合 vuex-persistedstate 实现自动化备份存储数据到本地缓存，规避页面刷新时vuex中数据为空的问题
-
-6、使用sdn的方式引入vue\axios\vuex\vue-router等文件，减小vendor的打包体积，优化首页性能
-
-7、路由按需加载，提高首页渲染速度
-
-8、按需加载 vux 的 ui 组件，减少代码冗余
-
-9、引入polyfill文件，动态处理es6兼容性
-
-10、动态骨架屏 （配置中，有待完善）
-
-...
