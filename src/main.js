@@ -10,6 +10,7 @@ import store from './store/index' //引用VUE
 import * as filters from './filters' // 全局 filters
 import './assets/icons' // icon
 import IconSvg from './components/SvgIcon'  //引入svg组件
+import FastClick from 'fastclick'  //引入快点
 
 import { ToastPlugin, WechatPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin} from 'vux'  // 按需引用vux组件
 
@@ -20,6 +21,8 @@ Vue.use(ConfirmPlugin)
 Vue.use(LoadingPlugin)
 
 Vue.component('icon-svg', IconSvg)  //全局注册icon-svg
+
+FastClick.attach(document.body); // 全局绑定快速点击
 
 // mock 模拟数据
 // if (process.env.NODE_ENV === 'production') {

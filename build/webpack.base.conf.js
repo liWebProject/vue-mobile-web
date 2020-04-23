@@ -39,13 +39,13 @@ const webpackConfig = {
     new SpritesPlugin({
         // 目标小图标
         src: {
-            cwd: path.resolve(__dirname, './src/assets/images'),
+            cwd: path.resolve(__dirname, '../src/assets/images'),
             glob: '*.png'
         },
         // 输出雪碧图文件及样式文件
         target: {
-            image: path.resolve(__dirname, './src/assets/style/sprite.png'),
-            css:[[path.resolve(__dirname, './src/assets/style/sprite.scss'),{
+            image: path.resolve(__dirname, '../src/assets/style/sprite.png'),
+            css:[[path.resolve(__dirname, '../src/assets/style/sprite.scss'),{
                 format: 'function_based_template'
             }]]
         },
@@ -54,7 +54,7 @@ const webpackConfig = {
         },
         // 样式文件中调用雪碧图地址写法
         apiOptions: {
-            cssImageRef: "./src/assets/style/sprite.png?v="+Date.parse(new Date())
+            cssImageRef: "~@/assets/style/sprite.png?v="+Date.parse(new Date())
         },
         spritesmithOptions: {
             algorithm: 'binary-tree',
