@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
-//const webpackConfig = originalConfig // 原来的 module.exports 代码赋值给变量 webpackConfig
+const SpritesPlugin = require('webpack-spritesmith');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -35,6 +35,33 @@ const webpackConfig = {
       '@': resolve('src'),
     }
   },
+  plugins: [  //雪碧图
+    new SpritesPlugin({
+        // 目标小图标
+        src: {
+            cwd: path.resolve(__dirname, './src/assets/images'),
+            glob: '*.png'
+        },
+        // 输出雪碧图文件及样式文件
+        target: {
+            image: path.resolve(__dirname, './src/assets/style/sprite.png'),
+            css:[[path.resolve(__dirname, './src/assets/style/sprite.scss'),{
+                format: 'function_based_template'
+            }]]
+        },
+        customTemplates: {
+            function_based_template: path.resolve(__dirname, '../sprite_handlebars_template.handlebars')
+        },
+        // 样式文件中调用雪碧图地址写法
+        apiOptions: {
+            cssImageRef: "./src/assets/style/sprite.png?v="+Date.parse(new Date())
+        },
+        spritesmithOptions: {
+            algorithm: 'binary-tree',
+            padding: 4
+        }
+    })
+  ],
   module: {
     rules: [
       {
@@ -119,6 +146,7 @@ const webpackConfig = {
   }
 }
 
+//配置babel-loader以正确编译 VUX 的js源码
 module.exports = vuxLoader.merge(webpackConfig, {
-  plugins: ['vux-ui']   //配置babel-loader以正确编译 VUX 的js源码
+  plugins: ['vux-ui']
 })
