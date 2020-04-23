@@ -353,3 +353,17 @@ export function removeClass(ele, cls) {
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+/**
+ * [transformObject 将两个长度相等的一维数组封装成一个键值对对象]
+ * @param  {[type]} keyArr   [description]
+ * @param  {[type]} valueArr [description]
+ * @return {[type]}          [description]
+ */
+export function transformObject(keyArr,valueArr) {
+    var obj = {};
+    keyArr.map( (v,i) => {
+        obj[keyArr[i]] = valueArr[i];
+    })
+    return obj;
+}

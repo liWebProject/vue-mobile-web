@@ -5,8 +5,6 @@ const Router = require('vue-router')
 import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
 
-import skeleton from '@/views/skeleton/skeleton.vue'
-
 Vue.use(Router)
 
 /* Layout */
@@ -15,14 +13,10 @@ Vue.use(Router)
 //路由懒加载
 const home = r => require.ensure([], () => r(require('@/views/index.vue')))
 const icons = r => require.ensure([], () => r(require('@/views/icons/index.vue')))
+const error = r => require.ensure([], () => r(require('@/views/error/index.vue')))
 
 
 export const routes = [
-  {
-    path: '/',
-    redirect: '/home',
-    meta: { title: '主页', keepAlive: false, auth: false }
-  },
   {
     path: '/home',
     name: 'home',
@@ -35,16 +29,23 @@ export const routes = [
     component: icons,
     meta: { title: '图标列表', keepAlive: true, auth: false }
   },
-  { // 插入骨架屏路由
-    path: '/skeleton',
-    name: 'skeleton',
-    component: skeleton
+  {
+    path: '/error',
+    name: 'error',
+    component: error,
+  },
+  {
+    path: '/*',
+    name: 'home',
+    redirect: '/home',
+    component: home,
+    meta: { title: '主页', keepAlive: false, auth: false }
   },
 ]
 
 
 const createRouter = () => new Router({
-  mode: 'history', // require service support
+  mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: routes
 })

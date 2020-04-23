@@ -1,8 +1,12 @@
+
+import imgsObj from '@/utils/imgs-map.js'
+
+
 /**
  * [exports description: 全局静态常量配置]
  * @type {Object}
  */
-module.exports = {
+export default {
   /**
    * [title description: 默认的page-title值]
    * @type {String}
@@ -17,6 +21,12 @@ module.exports = {
     success: '100001',
     noLogin: '50008'
   },
+
+    /**
+   * [Code description: 静态图片集合]
+   * @type {Object}
+   */
+  staticImgs: imgsObj,
 
   /**
    * [statistics description: 提取页面公用常量]

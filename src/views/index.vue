@@ -10,7 +10,6 @@
 
         <p>测试字体图标的使用： <svg-icon icon-class="password" /></p>
 
-        <p>测试v-touch:tap <a v-touch:tap="onTap">Tap me!</a></p>
     </div>
 
     <div class="panel">
@@ -21,8 +20,23 @@
         <v-touch v-on:swiperight="onSwipeRight(data)">SwipeRight me!</v-touch>
         <br />
         <v-touch tag="a" v-on:tap="onTap">Tap me!</v-touch>
-        <!-- <v-touch tag="p" v-on:tap="onTap">Tap me!</v-touch> -->
       </p>
+    </div>
+
+    <div class="panel">
+      <p>雪碧图测试：</p>
+      <span class='icon icon-demo1'></span>
+      <span class='icon icon-demo2'></span>
+
+
+      <p>测试图片引入1：(全局变量staticImgs方式)</p>
+      <img :src="staticImgs.demo1" alt="">
+
+      <!-- <p>测试图片引入2：(直接引入)</p>
+      <img src="../assets/images/demo1.png" alt=""> -->
+
+      <!-- <p>测试图片引入3：(import、require方式引入)</p>
+      <img :src="demo1" alt=""> -->
     </div>
 
 <!--     <div class="panel">
@@ -38,12 +52,17 @@
 <script>
 
 import { apiCityData } from '@/service/api.js'
+import settings from '@/config/baseConfig'
+
+//import demo1 from '@/assets/images/demo1.png'
 
 export default {
   name: 'demo',
   data () {
     return {
-      msg: '测试全局变量颜色'
+      msg: '测试全局变量颜色',
+      staticImgs: settings.staticImgs,
+      //demo1: demo1,
     }
   },
 
@@ -85,7 +104,7 @@ export default {
   },
 
   mounted(){
-
+console.log(this.staticImgs)
 
   },
 
@@ -105,6 +124,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  /* 雪碧图样式 */
+  @import '~@/assets/style/sprite';
+
+  .icon{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-demo1{
+    @include mix-icon-demo1();
+  }
+
+  .icon-demo2{
+    @include mix-icon-demo2();
+  }
 
   .box{
     margin: 100px auto;
@@ -132,12 +167,13 @@ export default {
         padding: 10px;
         border: 2px solid #ccc;
       }
+    }
 
+    img{
+      display: inline-block;
+      width: 100%;
+      height: auto;
     }
   }
-
-
-
-
 
 </style>
