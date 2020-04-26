@@ -4,12 +4,16 @@
     <h2 class='title'>demo页</h2>
 
     <div class="panel">
-        <p class='txt'>{{msg}}</p>
+       <p>测试自动加前缀: <span class='auto'>旋转</span></p>
+       <p class='txt'>{{msg}}</p>
+    </div>
 
-        <p>测试自动加前缀: <span class='auto'>旋转</span></p>
-
-        <p>测试字体图标的使用： <svg-icon icon-class="password" /></p>
-
+    <div class="panel">
+        <h3>测试字体图标的使用：</h3>
+        <p>原字体： <svg-icon icon-class="password" /></p>
+        <p>字体缩小： <svg-icon icon-class="password" class='icon1' /></p>
+        <p>字体放大： <svg-icon icon-class="password" class='icon2' /></p>
+        <p>字体变色： <svg-icon icon-class="password" class='icon3' /></p>
     </div>
 
     <div class="panel">
@@ -24,7 +28,7 @@
     </div>
 
     <div class="panel">
-      <p>雪碧图测试：</p>
+      <p>雪碧图使用测试：</p>
       <span class='icon icon-demo1'></span>
       <span class='icon icon-demo2'></span>
 
@@ -124,9 +128,8 @@ console.log(this.staticImgs)
 </script>
 
 <style lang="scss" scoped>
-  /* 雪碧图样式 */
-  @import '~@/assets/style/sprite';
-
+  
+  /* 测试图标使用 */
   .icon{
     display: inline-block;
     width: 60px;
@@ -141,9 +144,23 @@ console.log(this.staticImgs)
     @include mix-icon-demo2();
   }
 
+  .icon1{
+    font-size: 18px;
+  }
+
+  .icon2{
+    font-size: 50px;
+  }
+
+  .icon3{
+    color: $txt-orange;
+  }
+
+
   .box{
     margin: 100px auto;
     color: $txt-black;
+    padding: 20px 40px;
 
     .panel{
       margin: 60px auto;
