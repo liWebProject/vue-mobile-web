@@ -46,7 +46,7 @@ exports.cssLoaders = function (options) {
       loaders.push({
         loader: 'sass-resources-loader',
         options: {
-          resources: ['./src/assets/style/base.scss', './src/assets/style/mixin/mixin.scss'],
+          resources: ['./src/assets/style/base.scss', './src/assets/style/mixin/mixin.scss','./src/assets/style/sprite.scss'],
         },
       });
     }

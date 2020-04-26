@@ -74,7 +74,7 @@ const webpackConfig = {
           {
             loader: 'sass-resources-loader',
             options: {
-              resources: ['./src/assets/style/reset.scss', './src/assets/style/mixin/mixin.scss']
+              resources: ['./src/assets/style/reset.scss', './src/assets/style/mixin/mixin.scss','./src/assets/style/sprite.scss']
             },
           },
           {
