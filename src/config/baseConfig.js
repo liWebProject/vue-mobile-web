@@ -26,7 +26,7 @@ export default {
    * [Code description: 静态图片集合]
    * @type {Object}
    */
-  staticImgs: imgsObj,
+  staticImgs: Object.assign({}, imgsObj),
 
   /**
    * [statistics description: 提取页面公用常量]
