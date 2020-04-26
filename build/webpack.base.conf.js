@@ -39,7 +39,7 @@ const webpackConfig = {
     new SpritesPlugin({
         // 目标小图标
         src: {
-            cwd: path.resolve(__dirname, '../src/assets/images'),
+            cwd: path.resolve(__dirname, '../src/assets/images/sprite_icons'),
             glob: '*.png'
         },
         // 输出雪碧图文件及样式文件

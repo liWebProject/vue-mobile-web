@@ -1,11 +1,7 @@
 
 
-const req = require.context('../../static/images', false, /\.png|\.jpg|\.jpeg$/)
+const req = require.context('../assets/images/', false, /\.png|\.jpg|\.jpeg$/)
 const requireAll = requireContext => requireContext.keys()
-
-import { transformObject } from './index.js'
-
-const assetsImgPath = '../static/images/';  // 静态图路径 or 线上cdn路径
 
 const reg_name = /\.\/(.*)\./
 const reg = /\.\/(.*)/
@@ -16,9 +12,29 @@ const imgsNameArr = originArr.map(i => {
 })
 
 const imgsPathArr = originArr.map(i => {
-	return assetsImgPath + i.match(reg)[1];
+	return i.match(reg)[1];
 })
 
-const imgsObj = transformObject(imgsNameArr,imgsPathArr)
+/**
+ * [transformObject 2个长度相等的一维数组转为键值对对象]
+ * @param  {[type]} keyArr   [description]
+ * @param  {[type]} valueArr [description]
+ * @return {[type]}          [description]
+ */
+function transformObject(keyArr,valueArr) {
+    var obj = {};
 
+    keyArr.map( (v,i) => {
+        obj[keyArr[i]] = require('../assets/images/'+valueArr[i]);
+    })
+
+    return obj;
+}
+
+/**
+ * [imgsObj 调用方法生成图片对象]
+ * @type {[type]}
+ */
+const imgsObj =  transformObject(imgsNameArr,imgsPathArr);
+console.log(imgsObj);
 export default imgsObj;
