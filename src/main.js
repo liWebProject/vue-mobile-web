@@ -12,6 +12,11 @@ import './assets/icons' // icon
 import IconSvg from './components/SvgIcon'  //引入svg组件
 import FastClick from 'fastclick'  //引入快点
 
+// es6转es5，解决低版本浏览器不能识别es6语法问题
+import 'babel-polyfill'
+import Es6Promise from 'es6-promise'
+Es6Promise.polyfill()
+
 import { ToastPlugin, WechatPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin} from 'vux'  // 按需引用vux组件
 
 Vue.use(ToastPlugin)

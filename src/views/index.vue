@@ -38,7 +38,7 @@
       <p>静态图小于10000B 会被编译成base64输出，目的在于减少http请求，提升性能，如下图：</p>
       <img :src="staticImgs.empty" alt="">
 
-      <p>静态图小于10000B 原路径输出，避免css文件打包过大，如下图：</p>
+      <p>静态图大于10000B 原路径输出，避免css文件打包过大，如下图：</p>
       <img :src="staticImgs.demo1" alt="">
 
 
@@ -114,8 +114,7 @@ export default {
   },
 
   mounted(){
-console.log(this.staticImgs)
-
+    console.log(this.staticImgs)
   },
 
   created(){
@@ -134,7 +133,7 @@ console.log(this.staticImgs)
 </script>
 
 <style lang="scss" scoped>
-  
+
   /* 测试图标使用 */
   .icon{
     display: inline-block;
