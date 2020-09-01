@@ -13,7 +13,7 @@ function resolve (dir) {
 const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: ['babel-polyfill', './src/main.js']  //'./src/main.js'
   },
   externals: {  //通过externals排除下列文件的打包
     'vue': 'Vue',
@@ -95,6 +95,7 @@ const webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        query: {presets:['es2015']},
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
